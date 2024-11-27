@@ -21,16 +21,16 @@ const Course = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 flex justify-center min-h-screen">
+    <div className="bg-gradient-to-r from-slate-900 to-slate-800 flex justify-center min-h-screen">
       <div className="">
-          <h1 className="bg-blue-500 text-white rounded-xl mt-3 text-center p-5 text-4xl">หลักสูตรการสอนทั้งหมด</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-7 md:w-[880px] lg:w-[1280px] [400px]">
-          {
-            data.map((course) => (
-              <CourseCard key={course.id} {...course}/>
-            ))
-          }
-          </div>
+        <h1 className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl mt-3 text-center p-5 text-4xl">
+          หลักสูตรการสอนทั้งหมด
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-7 md:w-[880px] lg:w-[1280px] [400px]">
+          {data.map((course) => (
+            <CourseCard key={course.id} {...course} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -38,22 +38,25 @@ const Course = () => {
 
 const CourseCard = (props) => {
   return (
-    <div className="bg-white rounded-xl min-vh-screen shadow-lg">
+    <div className="bg-white rounded-md shadow-none transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-400">
       <div className="p-2">
         <div className="w-full h-30 sm:h-42 md:h-50 lg:h-60 overflow-hidden rounded-t-lg">
-          <img src={props.picture} alt="" className="rounded-y-2xl w-full h-full object-cover"/>
+          <img
+            src={props.picture}
+            alt=""
+            className="rounded-y-2xl w-full h-full object-cover"
+          />
         </div>
         <div className="text-xl py-2">{props.title}</div>
         <div className="text-md pb-2">{props.detail}</div>
       </div>
 
-      
       <div className="flex justify-center items-end p-3 ">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white text-center p-2 text-lg rounded-lg w-1/2"><NavLink to={'/course/'+props.id}>เนื้อหาในหลักสูตร</NavLink></button>
+        <button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:to-indigo-500 hover:from-pink-400 text-white text-center p-2 text-lg rounded-lg w-1/2">
+          <NavLink to={"/course/" + props.id}>เนื้อหาในหลักสูตร</NavLink>
+        </button>
       </div>
-
-
     </div>
   );
-}
+};
 export default Course;
